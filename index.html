@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fyr Lois Personalizado — Diseñemos tu plan de inglés</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap">
+<style>
+  :root{
+    --navy:#1a237e;
+    --navy-deep:#0f1761;
+    --green:#7ac142;
+    --green-2:#5fa733;
+    --orange:#f5a623;
+    --gold:#c9a04a;
+    --bg:#ffffff;
+    --soft:#f1f3f6;
+    --ink:#0e1340;
+    --muted:#6b7196;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{font-family:'Montserrat',system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+
+  /* nav */
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:1200px;margin:0 auto;gap:18px}
+  .logo{display:inline-flex;align-items:center;line-height:0}
+  .logo img{height:38px;width:auto}
+  .vip-tag{display:inline-block;background:var(--navy);color:#fff;font-size:10px;font-weight:900;letter-spacing:1.5px;padding:4px 10px;border-radius:4px;margin-left:14px;vertical-align:middle;border:1px solid var(--gold)}
+  .vip-tag .star{color:var(--gold);margin-right:4px}
+  .cta-pill{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(180deg,#9ad96a,#5fa733);color:#fff;font-weight:800;font-style:italic;padding:14px 26px;border-radius:999px;box-shadow:0 6px 14px rgba(95,167,51,.35);border:none;cursor:pointer;font-size:15px;transition:transform .15s ease, box-shadow .15s ease}
+  .cta-pill:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(95,167,51,.45)}
+  .cta-pill .wa{width:24px;height:24px;border-radius:50%;background:#fff;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;color:#25d366}
+  .cta-pill .wa img{width:16px;height:16px;display:block}
+  .wa-fab img{width:30px;height:30px;display:block}
+  .cta-pill.navy{background:linear-gradient(180deg,#1f6dd6,#0a3d92);box-shadow:0 6px 14px rgba(10,61,146,.25)}
+  .cta-pill.navy:hover{box-shadow:0 10px 20px rgba(10,61,146,.3)}
+
+  /* HERO — back to brand: white-ish bg, navy + green + orange dominant */
+  .hero{position:relative;padding:30px 0 70px;background:#f7f9fc;overflow:hidden}
+  .hero::before{
+    content:"";position:absolute;top:-200px;right:-200px;width:700px;height:700px;border-radius:50%;
+    background:radial-gradient(circle,#dde2ec 0%,transparent 70%);
+  }
+  .hero::after{
+    content:"";position:absolute;bottom:-120px;left:-180px;width:480px;height:480px;border-radius:50%;
+    background:radial-gradient(circle,rgba(122,193,66,.12) 0%,transparent 70%);
+  }
+  .hero-grid{position:relative;display:grid;grid-template-columns:1.1fr 1fr;gap:50px;align-items:center;z-index:1}
+  .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+  .badge{display:inline-flex;align-items:center;gap:6px;background:#fff;border:2px solid var(--navy);color:var(--navy);font-weight:800;font-size:11px;letter-spacing:.5px;padding:6px 12px;border-radius:999px}
+  .badge.live{background:var(--navy);color:#fff}
+  .badge.vip{background:var(--navy);color:#fff;border-color:var(--gold);position:relative}
+  .badge.vip::before{content:"★";color:var(--gold);margin-right:4px}
+  .badge .flag{width:18px;height:12px;border-radius:2px;background:linear-gradient(180deg,#ffcd00 0 33%,#003893 33% 66%,#cf142b 66% 100%)}
+
+  h1.hero-h{font-size:56px;line-height:1.02;letter-spacing:-1.6px;margin:0 0 20px;color:var(--navy);font-weight:900}
+  h1.hero-h em{color:var(--green);font-style:normal;position:relative;display:inline-block}
+  h1.hero-h em::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:10px;background:rgba(122,193,66,.25);z-index:-1;border-radius:4px}
+  .hero-sub{font-size:18px;line-height:1.5;color:#3a4070;font-weight:500;margin:0 0 12px;max-width:540px}
+  .hero-sub b{color:var(--navy);font-weight:800}
+  .hero-promise{font-size:14px;color:var(--navy);font-weight:800;font-style:italic;margin:0 0 28px;padding:10px 14px;background:rgba(245,166,35,.1);border-left:3px solid var(--orange);border-radius:0 8px 8px 0;max-width:520px}
+  .hero-ctas{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:28px}
+  .hero-ctas .ghost{font-weight:800;color:var(--navy);font-size:13px;letter-spacing:.3px}
+  .hero-stats{display:flex;gap:30px;padding-top:22px;border-top:1px solid #d8dde8;max-width:540px}
+  .hero-stats .s{flex:1}
+  .hero-stats .n{font-weight:900;color:var(--navy);font-size:26px;letter-spacing:-.5px}
+  .hero-stats .l{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.7px;text-transform:uppercase;margin-top:4px}
+
+  /* 1-on-1 visual — back to navy on light, with subtle gold ring */
+  .vip-visual{
+    background:linear-gradient(135deg,#1e2a8c 0%,#0f1761 100%);
+    border-radius:20px;padding:18px;
+    box-shadow:0 24px 60px rgba(15,23,97,.35), 0 0 0 1px var(--gold);
+    position:relative;
+  }
+  .vip-hero-img{border-radius:12px;overflow:hidden;margin-bottom:12px}
+  .vip-hero-img img{width:100%;height:auto;display:block;object-fit:cover}
+  .vip-board{background:#fff;border-radius:8px;padding:12px 14px;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#3a4070;line-height:1.7}
+  .vip-board .yel{background:rgba(245,166,35,.25);padding:0 4px;border-radius:2px}
+  .vip-board .gr{color:var(--green-2);font-weight:800}
+  .vip-board .h{font-family:'Montserrat',sans-serif;font-weight:900;color:var(--navy);font-size:11px;letter-spacing:.5px;margin-bottom:6px}
+
+  /* PROMO STRIP */
+  .promo-band{background:linear-gradient(180deg,#1a237e,#0f1761);color:#fff;padding:24px 0}
+  .promo-row{display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap}
+  .promo-row .left b{color:var(--orange)}
+  .promo-row .left .t1{font-weight:900;font-size:18px;letter-spacing:.5px;margin:0}
+  .promo-row .left .t2{font-weight:700;font-size:13px;color:#bcc3e8;margin:4px 0 0}
+  .flip{display:flex;gap:10px}
+  .flip .digit{position:relative;width:74px;height:96px;border-radius:10px;background:linear-gradient(180deg,#f7f8fa 0%,#e9ecf1 50%,#f7f8fa 50.1%,#f1f3f6 100%);box-shadow:inset 0 0 0 2px #dfe3ec;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:72px;color:var(--navy);overflow:hidden}
+  .flip .digit:first-child{color:var(--green)}
+  .flip .digit::before{content:"";position:absolute;left:0;right:0;top:50%;height:2px;background:rgba(0,0,0,.18)}
+  .promo-row .cupos{font-weight:900;font-size:13px;letter-spacing:.5px;color:var(--orange)}
+
+  /* SECTIONS */
+  .sec{padding:80px 0}
+  .sec-eyebrow{display:inline-block;color:var(--green-2);font-weight:900;font-size:12px;letter-spacing:3px;margin:0 0 12px}
+  .sec-eyebrow.orange{color:var(--orange)}
+  .sec h2{margin:0 0 14px;color:var(--navy);font-weight:900;font-size:42px;line-height:1.05;letter-spacing:-.8px;max-width:820px}
+  .sec h2 b{color:var(--green)}
+  .sec h2 .or{color:var(--orange)}
+  .sec .lead{margin:0 0 50px;color:#3a4070;font-size:17px;font-weight:500;line-height:1.5;max-width:680px}
+
+  /* GROUP VS 1:1 */
+  .cmp{background:#0f1761;color:#fff;padding:80px 0}
+  .cmp h2,.cmp .lead{color:#fff}
+  .cmp h2 b{color:var(--green)}
+  .cmp .lead{color:#bcc3e8}
+  .cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:30px}
+  .cmp-col{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:30px}
+  .cmp-col.win{background:linear-gradient(180deg,rgba(122,193,66,.12),rgba(122,193,66,.04));border-color:rgba(122,193,66,.4);position:relative}
+  .cmp-col.win::after{content:"";position:absolute;inset:-1px;border-radius:18px;border:1px solid var(--gold);pointer-events:none;opacity:.5}
+  .cmp-col h3{margin:0 0 6px;font-weight:900;font-size:20px}
+  .cmp-col .pre{color:#bcc3e8;font-size:12px;font-weight:800;letter-spacing:.5px;margin:0 0 22px;text-transform:uppercase}
+  .cmp-col.win .pre{color:var(--orange)}
+  .cmp-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px}
+  .cmp-col li{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.4;font-weight:600;color:#dfe4ff}
+  .cmp-col li .ic{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;margin-top:1px}
+  .cmp-col.win li .ic{background:var(--green);color:#fff}
+  .cmp-col:not(.win) li .ic{background:rgba(255,255,255,.1);color:#9aa0c8}
+
+  /* HOW IT WORKS */
+  .how{background:#f7f9fc}
+  .how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:30px}
+  .step{position:relative;background:#fff;border-radius:14px;padding:26px 22px;border:1px solid #e3e7ef;box-shadow:0 6px 14px rgba(15,23,97,.04)}
+  .step .n{position:absolute;top:-14px;left:22px;width:34px;height:34px;border-radius:8px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+  .step h3{margin:14px 0 8px;color:var(--navy);font-weight:900;font-size:15px;letter-spacing:.3px}
+  .step p{margin:0;color:#3a4070;font-size:13px;font-weight:500;line-height:1.5}
+
+  /* AUDIENCES */
+  .aud{background:#fff}
+  .aud-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px}
+  .aud-card{position:relative;border-radius:14px;padding:26px 22px;background:#f7f9fc;border:1px solid #e3e7ef;overflow:hidden}
+  .aud-card .ic{width:44px;height:44px;border-radius:10px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+  .aud-card .ic svg{width:24px;height:24px}
+  .aud-card h3{margin:0 0 4px;color:var(--navy);font-weight:900;font-size:15px;letter-spacing:.3px}
+  .aud-card .age{display:inline-block;color:var(--orange);font-size:11px;font-weight:800;letter-spacing:.5px;margin-bottom:8px}
+  .aud-card p{margin:0;color:#3a4070;font-size:12.5px;font-weight:500;line-height:1.5}
+
+  /* FEATURES */
+  .feat{background:#f7f9fc}
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+  .feat-card{background:#fff;border-radius:14px;padding:26px;border:1px solid #e3e7ef;display:flex;gap:14px;align-items:flex-start}
+  .feat-card .ic{width:38px;height:38px;border-radius:10px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .feat-card .ic svg{width:20px;height:20px}
+  .feat-card.gold{border-color:var(--gold);box-shadow:0 4px 14px rgba(201,160,74,.12)}
+  .feat-card.gold .ic{background:var(--navy);box-shadow:0 0 0 2px var(--gold)}
+  .feat-card h3{margin:0 0 6px;color:var(--navy);font-weight:900;font-size:14px;letter-spacing:.3px}
+  .feat-card p{margin:0;color:#3a4070;font-size:13px;font-weight:500;line-height:1.45}
+  .feat-card .vip-only{display:inline-block;background:var(--navy);color:var(--gold);font-size:9px;font-weight:900;letter-spacing:.8px;padding:2px 8px;border-radius:4px;margin-left:6px;vertical-align:middle;border:1px solid var(--gold)}
+
+  /* PRICING */
+  .pricing{padding:80px 0;background:#f4f5f8;text-align:center;position:relative}
+  .pricing h2{margin:0 0 8px;color:var(--navy);font-weight:900;font-size:38px;letter-spacing:-.5px}
+  .pricing h2 b{color:var(--green)}
+  .pricing .sub{margin:8px 0;color:var(--navy);font-weight:700;font-size:15px;letter-spacing:.4px}
+  .pricing .fine{margin:0 auto 36px;color:#9aa0b6;font-weight:700;font-size:11.5px;letter-spacing:1.2px;max-width:760px;line-height:1.5}
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1080px;margin:20px auto 0;padding-top:8px;align-items:stretch}
+  .plan{background:#fff;color:var(--ink);border-radius:18px;padding:30px 22px;text-align:center;position:relative;box-shadow:0 8px 22px rgba(15,23,97,.08);border:2px solid var(--green);display:flex;flex-direction:column}
+  .plan.featured{border:2px solid var(--gold);background:linear-gradient(180deg,#fff 0%,#fffaf0 100%);transform:scale(1.04);box-shadow:0 16px 40px rgba(15,23,97,.18)}
+  .plan-icon{position:absolute;top:-12px;left:-12px;width:68px;height:68px;pointer-events:none;z-index:2;line-height:0}
+  .plan-icon img{width:100%;height:100%;display:block;object-fit:contain}
+  .plan .ribbon{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;font-weight:900;font-size:11px;letter-spacing:1px;padding:6px 16px;border-radius:6px;border:1px solid var(--gold)}
+  .plan .ribbon .star{color:var(--gold)}
+  .plan h3{margin:0 0 4px;color:var(--navy);font-weight:900;font-size:20px;letter-spacing:.4px}
+  .plan.featured h3{color:var(--navy)}
+  .plan .hours{color:var(--green-2);font-weight:900;font-size:54px;line-height:1;margin:14px 0 6px;letter-spacing:-2px}
+  .plan.featured .hours{color:var(--orange)}
+  .plan .hours-l{color:var(--navy);font-size:13px;font-weight:800;letter-spacing:.5px;margin:0 0 18px}
+  .plan .strike{color:var(--muted);font-weight:700;font-size:13px;margin:14px 0 4px}
+  .plan .strike s{opacity:.7}
+  .plan .price{color:var(--navy);font-weight:900;font-size:46px;letter-spacing:-1px;margin:6px 0 6px;line-height:1}
+  .plan .per{color:var(--muted);font-size:12px;font-weight:700;letter-spacing:.4px;margin:0 0 18px}
+  .plan .disc{display:inline-block;background:var(--green);color:#fff;font-weight:900;font-size:13px;letter-spacing:.5px;padding:6px 14px;border-radius:999px;margin:0 0 18px}
+  .plan.featured .disc{background:var(--orange)}
+  .plan .feat-list{list-style:none;padding:0;margin:0 0 22px;text-align:left;display:flex;flex-direction:column;gap:8px;flex:1}
+  .plan .feat-list li{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;font-weight:600;line-height:1.4;color:var(--ink)}
+  .plan .feat-list li::before{content:"✓";color:var(--green);font-weight:900;flex-shrink:0}
+  .plan.featured .feat-list li::before{color:var(--orange)}
+  .plan .buy{display:inline-block;background:linear-gradient(180deg,#9ad96a,#5fa733);color:#fff;font-weight:800;font-style:italic;padding:13px 22px;border-radius:999px;border:none;cursor:pointer;font-size:13px;width:100%}
+  .plan.featured .buy{background:linear-gradient(180deg,#1f6dd6,#0a3d92)}
+  .plan .monthly{margin:8px 0 0;color:var(--orange);font-size:11px;font-weight:800;letter-spacing:.5px}
+
+  /* SEDES */
+  .sedes{background:#fff;border-top:1px solid #e3e7ef;border-bottom:1px solid #e3e7ef}
+  .sedes-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;align-items:start}
+  .sede{text-align:center}
+  .sede h3{margin:0 0 12px;color:var(--navy);font-weight:900;font-size:clamp(15px,1.5vw,18px);letter-spacing:.5px;text-transform:uppercase;line-height:1.15}
+  .sede .pic{border-radius:16px 16px 16px 8px;overflow:hidden;aspect-ratio:509/528;box-shadow:0 14px 30px rgba(15,23,97,.1);border:1px solid #e3e7ef}
+  .sede .pic img{width:100%;height:100%;object-fit:cover;display:block}
+  .sede h4{margin:14px 0 8px;color:var(--orange);font-weight:900;font-size:13px;letter-spacing:1px;text-transform:uppercase}
+  .sede p{margin:0;color:var(--navy);font-weight:700;font-size:11.5px;line-height:1.45;text-transform:uppercase;letter-spacing:.28px}
+
+  /* TESTIMONIALS */
+  .testi{padding:80px 0;background:#fff}
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .quote{position:relative;background:linear-gradient(180deg,#dfe3ec,#c9cfdc);border-radius:16px;padding:28px 22px 22px;box-shadow:6px 6px 0 #b3bccc}
+  .quote .qm{position:absolute;font-size:64px;line-height:1;color:var(--green);font-weight:900;font-family:Georgia,serif}
+  .quote .qm.tl{top:-2px;left:14px}
+  .quote p{color:var(--navy);font-weight:700;font-size:13.5px;line-height:1.5;margin:18px 0 16px}
+  .quote .who{display:flex;align-items:center;gap:12px}
+  .quote .av{width:42px;height:42px;border-radius:50%;background:repeating-linear-gradient(45deg,#cfd6e2 0 6px,#dde2ec 6px 12px);border:2px solid #fff}
+  .quote .name{color:var(--navy);font-weight:900;font-size:13px}
+  .quote .meta{color:var(--navy);font-weight:700;font-size:11px}
+  .quote .stars{color:var(--orange);font-size:12px;margin-top:2px}
+
+  /* FAQ */
+  .faq{padding:70px 0 50px;background:#f7f9fc}
+  .faq h2{margin:0 0 30px;text-align:center;color:var(--navy);font-weight:900;font-size:32px;letter-spacing:.3px}
+  .faq h2 b{color:var(--green)}
+  .faq-list{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+  .qa{background:#fff;border-radius:12px;padding:14px 22px;border-left:6px solid var(--green);border-right:6px solid var(--navy);cursor:pointer}
+  .qa:nth-child(even){border-left-color:var(--navy);border-right-color:var(--green)}
+  .qa .qrow{display:flex;align-items:center;justify-content:space-between;gap:18px}
+  .qa .q{color:var(--navy);font-weight:900;font-size:13.5px;letter-spacing:.3px;margin:0}
+  .qa .chev{color:var(--navy);font-weight:900;font-size:18px;transition:transform .2s ease}
+  .qa .a{color:var(--navy);font-weight:600;font-size:13px;line-height:1.5;margin:0;max-height:0;overflow:hidden;transition:max-height .25s ease, margin .25s ease}
+  .qa.open .a{max-height:240px;margin-top:8px}
+  .qa.open .chev{transform:rotate(180deg)}
+
+  /* FINAL CTA */
+  .final{padding:80px 0;background:linear-gradient(180deg,#1a237e,#0f1761);color:#fff;text-align:center;position:relative;overflow:hidden}
+  .final::before{content:"";position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(circle,rgba(122,193,66,.15) 0%,transparent 70%)}
+  .final h2{margin:0 0 12px;font-weight:900;font-size:38px;letter-spacing:-.5px;position:relative}
+  .final h2 .g{color:var(--green)}
+  .final p{margin:0 0 26px;color:#bcc3e8;font-weight:600;font-size:16px;position:relative}
+  .final .cta-pill{font-size:16px;padding:16px 34px;position:relative}
+
+  /* WA fab */
+  .wa-fab{position:fixed;right:22px;bottom:22px;width:58px;height:58px;border-radius:50%;background:#25d366;color:#fff;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(37,211,102,.45);z-index:50;cursor:pointer;border:none}
+  .wa-fab::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid #25d366;opacity:.5;animation:pulse 2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.15);opacity:0}}
+
+  footer{background:#0a0f3d;color:#9aa0c8;padding:30px 0;font-size:12px;font-weight:600}
+  footer .row{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  .social-links{display:flex;align-items:center;gap:12px}
+  .social-links a{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.06);transition:background .15s ease}
+  .social-links a:hover{background:rgba(255,255,255,.14)}
+  .social-links img{width:20px;height:20px;display:block}
+
+  @media (max-width:980px){
+    .hero-grid,.cmp-grid,.how-steps,.aud-grid,.feat-grid,.plans,.testi-grid{grid-template-columns:1fr}
+    .sedes-grid{grid-template-columns:repeat(2,1fr)}
+    h1.hero-h{font-size:38px}
+    .how-steps,.aud-grid{grid-template-columns:1fr 1fr}
+    .plan.featured{transform:none}
+  }
+  @media (max-width:560px){
+    .sedes-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager -->
+<script>
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != "dataLayer" ? "&l=" + l : "";
+    j.async = true;
+    j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, "script", "dataLayer", "GTM-M5B53KKW");
+</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+  <iframe
+    src="https://www.googletagmanager.com/ns.html?id=GTM-M5B53KKW"
+    height="0"
+    width="0"
+    style="display: none; visibility: hidden"
+  ></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<header class="nav">
+  <div>
+    <a href="#" class="logo" aria-label="Fyr Lois">
+      <img src="logo-fyrlois.svg" alt="Fyr Lois" width="140" height="53">
+    </a>
+    <span class="vip-tag"><span class="star">★</span>PERSONALIZADO</span>
+  </div>
+  <a class="cta-pill whatsapp-link" href="#wa">
+    <span class="wa">
+      <img src="social-icons-WA Green.svg" alt="" width="16" height="16">
+    </span>
+    Diseñemos tu plan
+  </a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge-row">
+        <span class="badge vip">PROGRAMA PERSONALIZADO</span>
+        <span class="badge">CELTA · TOEFL · MARCO MCER</span>
+        <span class="badge"><span class="flag"></span> ONLINE Y PRESENCIAL</span>
+      </div>
+      <h1 class="hero-h">Un profesor <em>exclusivo para ti.</em> Tu inglés, a tu ritmo.</h1>
+      <p class="hero-sub">Programa flexible, totalmente <b>personalizado</b> para tus objetivos profesionales o personales. Profesores certificados <b>CELTA y TOEFL</b>, alineados al Marco Común Europeo. Tu agenda manda. Tus metas guían cada clase.</p>
+      <p class="hero-promise">Tú solo apareces. Del resto nos encargamos nosotros.</p>
+      <div class="hero-ctas">
+        <button class="cta-pill whatsapp-link" type="button">
+          <span class="wa">
+            <img src="social-icons-WA Green.svg" alt="" width="16" height="16">
+          </span>
+          Diseñemos tu plan
+        </button>
+        <span class="ghost">⏱ Respuesta por WhatsApp en menos de 10 min</span>
+      </div>
+      <div class="hero-stats">
+        <div class="s"><div class="n">1:1</div><div class="l">Profesor exclusivo</div></div>
+        <div class="s"><div class="n">100%</div><div class="l">A tu medida</div></div>
+        <div class="s"><div class="n">∞</div><div class="l">Horarios posibles</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="vip-visual">
+        <div class="vip-hero-img">
+          <img src="0.png" alt="Sesión personalizada 1:1 con profesor Fyr Lois" width="560" height="320" loading="eager" decoding="async">
+        </div>
+        <div class="vip-board">
+          <div class="h">▸ TU PLAN DE HOY</div>
+          Pronunciación: <span class="yel">"th" sound (think, three)</span><br>
+          Práctica: <span class="gr">presentación reunión cliente USA</span><br>
+          Vocabulario: <span class="yel">finance · contracts · NDA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMO -->
+<section class="promo-band">
+  <div class="wrap promo-row">
+    <div class="left">
+      <p class="t1"><b>HASTA 25% OFF</b> · CUPOS PERSONALIZADOS MAYO 2026</p>
+      <p class="t2">SOLO 50 ALUMNOS POR TRIMESTRE · CADA PROFESOR ACEPTA POCOS</p>
+    </div>
+    <div class="flip" id="flip">
+      <div class="digit" id="d1">0</div>
+      <div class="digit" id="d2">3</div>
+      <div class="digit" id="d3">7</div>
+    </div>
+    <div class="cupos">¡CUPOS DISPONIBLES!</div>
+  </div>
+</section>
+
+<!-- GROUP VS 1:1 -->
+<section class="cmp">
+  <div class="wrap">
+    <span class="sec-eyebrow orange">CLASE GRUPAL VS PERSONALIZADO</span>
+    <h2>Clase grupal te enseña inglés. <b>Personalizado te enseña TU inglés.</b></h2>
+    <p class="lead">Si necesitas hablar inglés para algo concreto — tu trabajo, una entrevista, tu hijo, una mudanza — necesitas un programa hecho para ti, no para un grupo de 10. Aquí cada minuto cuenta para tus metas.</p>
+    <div class="cmp-grid">
+      <div class="cmp-col">
+        <h3>Clase grupal</h3>
+        <p class="pre">Programa estándar</p>
+        <ul>
+          <li><span class="ic">○</span><span>Currículo fijo igual para todos los estudiantes</span></li>
+          <li><span class="ic">○</span><span>Hablas ~10 minutos por clase de 90</span></li>
+          <li><span class="ic">○</span><span>Horarios fijos, en bandas predefinidas</span></li>
+          <li><span class="ic">○</span><span>El profesor ajusta al promedio del grupo</span></li>
+          <li><span class="ic">○</span><span>Tu objetivo personal se diluye</span></li>
+        </ul>
+      </div>
+      <div class="cmp-col win">
+        <h3>★ Personalizado</h3>
+        <p class="pre">Hecho a tu medida</p>
+        <ul>
+          <li><span class="ic">★</span><span>Plan diseñado en torno a TUS objetivos personales</span></li>
+          <li><span class="ic">★</span><span>Hablas el 100% de la sesión — eres el único alumno</span></li>
+          <li><span class="ic">★</span><span>Horarios totalmente flexibles, tú propones el día y la hora</span></li>
+          <li><span class="ic">★</span><span>Mismo profesor exclusivo durante todo el programa</span></li>
+          <li><span class="ic">★</span><span>Ritmo acelerado: avanzas 2-3x más rápido</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec how">
+  <div class="wrap">
+    <span class="sec-eyebrow">CÓMO FUNCIONA</span>
+    <h2>Tu camino al inglés en <b>4 pasos.</b></h2>
+    <p class="lead">Sin sorpresas, sin programas pre-fabricados. Construimos tu ruta antes de empezar y la ajustamos contigo cada mes.</p>
+    <div class="how-steps">
+      <div class="step">
+        <div class="n">1</div>
+        <h3>Diagnóstico</h3>
+        <p>Sesión gratis para evaluar tu nivel, tus metas (trabajo, mudanza, examen, hijos) y tu agenda.</p>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <h3>Tu plan</h3>
+        <p>Te asignamos un profesor exclusivo certificado CELTA/TOEFL y diseñamos tu currículo a la medida.</p>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <h3>Clases 1:1</h3>
+        <p>Online o presencial. Tú eliges los días y horas. Pronunciación, escritura, conversación — lo que tú necesites.</p>
+      </div>
+      <div class="step">
+        <div class="n">4</div>
+        <h3>Resultados medibles</h3>
+        <p>Reporte mensual de avance alineado al Marco Europeo (A1-C2). Vemos juntos lo que funcionó y ajustamos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCES -->
+<section class="sec aud">
+  <div class="wrap">
+    <span class="sec-eyebrow">PARA QUIÉN ES</span>
+    <h2>Funciona para <b>cualquier edad</b>, cualquier objetivo.</h2>
+    <p class="lead">Cada profesor adapta el método al estudiante. No es lo mismo enseñarle a un niño de 8 años que a un ejecutivo preparando una reunión con su junta directiva. Y eso es justo el punto.</p>
+    <div class="aud-grid">
+      <div class="aud-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3"/><path d="M5 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2"/></svg></div>
+        <span class="age">5 – 12 años</span>
+        <h3>Niños</h3>
+        <p>Juegos, canciones, cuentos. El profesor adapta el material al nivel y la atención del niño.</p>
+      </div>
+      <div class="aud-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 L4 6 v6 c0 5 4 9 8 10 c4-1 8-5 8-10 V6 z"/></svg></div>
+        <span class="age">13 – 17 años</span>
+        <h3>Adolescentes</h3>
+        <p>Preparación para exámenes (TOEFL, IELTS, SAT), apoyo escolar, planes de mudanza al exterior.</p>
+      </div>
+      <div class="aud-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 17 L12 22 L22 17"/><path d="M2 12 L12 17 L22 12"/><path d="M12 2 L2 7 L12 12 L22 7 z"/></svg></div>
+        <span class="age">18+</span>
+        <h3>Adultos</h3>
+        <p>Conversación, viajes, cambio de carrera, romper el bloqueo de hablar. Sin presión, a tu ritmo.</p>
+      </div>
+      <div class="aud-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V4h6v3M3 12h18"/></svg></div>
+        <span class="age">PROFESIONALES</span>
+        <h3>Negocios</h3>
+        <p>Reuniones, presentaciones, negociación, redacción de emails y contratos. Vocabulario de tu industria.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="sec feat">
+  <div class="wrap">
+    <span class="sec-eyebrow">QUÉ INCLUYE</span>
+    <h2>Todo lo que esperas de Fyr Lois — <b>solo para ti.</b></h2>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18M3 12h18M3 19h12"/></svg></div>
+        <div><h3>Clases 100% en inglés</h3><p>Inmersión real desde la primera sesión. Sin traducciones que detienen tu progreso.</p></div>
+      </div>
+      <div class="feat-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5"/></svg></div>
+        <div><h3>Adaptado a tus necesidades</h3><p>El plan se construye contigo, no para un currículo genérico de salón.</p></div>
+      </div>
+      <div class="feat-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <div><h3>Metodología única</h3><p>27 años perfeccionando el método Fyr Lois — ahora aplicado solo a ti.</p></div>
+      </div>
+      <div class="feat-card gold">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div><h3>Profesor exclusivo <span class="vip-only">★ VIP</span></h3><p>El mismo profesor durante todo el programa. Conoce tu progreso, tus errores, tu ritmo.</p></div>
+      </div>
+      <div class="feat-card gold">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <div><h3>Clases individuales <span class="vip-only">★ VIP</span></h3><p>1:1 puro. Hablas el 100% del tiempo. Sin compartir minutos con nadie.</p></div>
+      </div>
+      <div class="feat-card gold">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M5 7l3 3M19 7l-3 3M3 14h4M17 14h4M7 21l3-3M17 21l-3-3"/></svg></div>
+        <div><h3>Objetivos a la medida <span class="vip-only">★ VIP</span></h3><p>Reunión el martes, examen el viernes, mudanza en 6 meses. Todo entra al plan.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing">
+  <div class="wrap">
+    <h2>INVERSIÓN <b>PERSONALIZADA</b></h2>
+    <p class="sub">PAQUETES POR HORAS · ONLINE O PRESENCIAL · PAGOS MENSUALES POSIBLES</p>
+    <p class="fine">RECIBE EL PLAN EXACTO Y TU PROFESOR ASIGNADO POR WHATSAPP EN MENOS DE 10 MINUTOS, SIN COMPROMISO</p>
+    <div class="plans">
+      <!-- STARTER -->
+      <div class="plan">
+        <span class="plan-icon" aria-hidden="true"><img src="plan-icon-starter.svg" alt="" width="68" height="68"></span>
+        <h3>STARTER</h3>
+        <div class="hours">16h</div>
+        <p class="hours-l">DE CLASES 1:1</p>
+        <p class="strike">ANTES <s>$640,00</s></p>
+        <p class="price">$576</p>
+        <p class="per">$36 por hora · 1 módulo</p>
+        <p class="disc">10% DE DESCUENTO</p>
+        <ul class="feat-list">
+          <li>Profesor exclusivo certificado CELTA/TOEFL</li>
+          <li>Plan personalizado con tus objetivos</li>
+          <li>Online o presencial — tú decides</li>
+          <li>Horarios 100% flexibles</li>
+          <li>Reporte de avance al cierre</li>
+        </ul>
+        <button class="buy whatsapp-link" type="button">Diseñemos tu plan</button>
+      </div>
+
+      <!-- ELITE — featured center -->
+      <div class="plan featured">
+        <span class="ribbon"><span class="star">★</span> ÉLITE · MÁXIMO RESULTADO</span>
+        <span class="plan-icon" aria-hidden="true"><img src="plan-icon-elite.svg" alt="" width="68" height="68"></span>
+        <h3>ÉLITE</h3>
+        <div class="hours">96h</div>
+        <p class="hours-l">DE CLASES 1:1 · 6 MESES</p>
+        <p class="strike">ANTES <s>$3.456,00</s></p>
+        <p class="price">$2.592</p>
+        <p class="per">$27 por hora · plan completo</p>
+        <p class="disc">25% DE DESCUENTO</p>
+        <ul class="feat-list">
+          <li>Todo lo del plan Ejecutivo</li>
+          <li>Pagos mensuales — desde $432/mes</li>
+          <li>Curriculum diseñado a tu industria</li>
+          <li>Prioridad en horarios y profesores</li>
+          <li>Sesiones de simulación ilimitadas (entrevistas, presentaciones, board meetings)</li>
+          <li>Pareja o hijo entran al programa con descuento</li>
+          <li>Coordinador dedicado por WhatsApp</li>
+        </ul>
+        <button class="buy whatsapp-link" type="button">Reservar mi plan Élite</button>
+        <p class="monthly">DESDE $432/MES · 6 CUOTAS</p>
+      </div>
+
+      <!-- EJECUTIVO -->
+      <div class="plan">
+        <span class="plan-icon" aria-hidden="true"><img src="plan-icon-ejecutivo.svg" alt="" width="68" height="68"></span>
+        <h3>EJECUTIVO</h3>
+        <div class="hours">48h</div>
+        <p class="hours-l">DE CLASES 1:1 · 3 MESES</p>
+        <p class="strike">ANTES <s>$1.920,00</s></p>
+        <p class="price">$1.536</p>
+        <p class="per">$32 por hora · 3 módulos</p>
+        <p class="disc">20% DE DESCUENTO</p>
+        <ul class="feat-list">
+          <li>Todo lo del plan Starter</li>
+          <li>Pagos mensuales disponibles</li>
+          <li>Vocabulario por industria</li>
+          <li>Sesiones de simulación incluidas</li>
+          <li>Reportes mensuales MCER</li>
+          <li>Cambio de profesor sin costo</li>
+        </ul>
+        <button class="buy whatsapp-link" type="button">Diseñemos tu plan</button>
+        <p class="monthly">DESDE $512/MES · 3 CUOTAS</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEDES -->
+<section class="sec sedes" id="sedes">
+  <div class="wrap" style="text-align:center;margin-bottom:46px">
+    <span class="sec-eyebrow orange">FYR LOIS EN VENEZUELA</span>
+    <h2 style="margin:0 auto;color:var(--navy);font-weight:900;font-size:42px;letter-spacing:-.8px;max-width:780px;line-height:1.05">Sedes <b>principales</b></h2>
+    <p style="margin:14px auto 0;color:#3a4070;font-size:16px;font-weight:500;line-height:1.55;max-width:680px">Tu programa Personalizado puede ser 100% online o presencial. Estas son nuestras sedes en Venezuela para clases presenciales, evaluaciones de nivel y todo lo que necesites en persona.</p>
+  </div>
+  <div class="wrap">
+    <div class="sedes-grid">
+      <article class="sede">
+        <h3>Caracas</h3>
+        <div class="pic"><img src="ccct.png" alt="Exterior del centro comercial CCCT en Caracas" width="509" height="528" loading="lazy" decoding="async"></div>
+        <h4>CCCT</h4>
+        <p>Centro Ciudad Comercial Tamanaco, sector Yarey, planta baja, local PB 005.</p>
+      </article>
+      <article class="sede">
+        <h3>Caracas</h3>
+        <div class="pic"><img src="ucab.png" alt="Campus UCAB Montalbán" width="509" height="528" loading="lazy" decoding="async"></div>
+        <h4>UCAB</h4>
+        <p>UCAB Montalbán, módulo 1, piso 5, oficina A1-53.</p>
+      </article>
+      <article class="sede">
+        <h3>Barquisimeto</h3>
+        <div class="pic"><img src="nuevasegovia.png" alt="Torre y zona de Nueva Segovia en Barquisimeto" width="509" height="528" loading="lazy" decoding="async"></div>
+        <h4>Nueva Segovia</h4>
+        <p>Multicentro empresarial Crystal Plaza, torre B, 1er piso, local 1-B.</p>
+      </article>
+      <article class="sede">
+        <h3>Puerto Ordaz</h3>
+        <div class="pic"><img src="altavista.png" alt="Centro comercial Alta Vista en Puerto Ordaz" width="509" height="528" loading="lazy" decoding="async"></div>
+        <h4>Alta Vista</h4>
+        <p>Centro comercial Naraya, piso 1, local 123.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi">
+  <div class="wrap">
+    <span class="sec-eyebrow" style="display:block;text-align:center">RESULTADOS REALES · ESTUDIANTES PERSONALIZADOS</span>
+    <h2 style="text-align:center;margin:0 auto 40px">Hablan inglés para lo que necesitaban hablarlo.</h2>
+    <div class="testi-grid">
+      <div class="quote">
+        <span class="qm tl">"</span>
+        <p>Tenía 6 semanas para presentar a la junta directiva en Miami. Mi profesor armó todo el plan alrededor de esa reunión: vocabulario financiero, simulación de Q&A, pronunciación. Salí impecable.</p>
+        <div class="who">
+          <div class="av"></div>
+          <div>
+            <div class="name">RICARDO SOSA</div>
+            <div class="meta">CFO · CARACAS</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="quote">
+        <span class="qm tl">"</span>
+        <p>Mi hija se mudaba a Toronto a los 12 años sin hablar inglés. La profesora le hizo el programa lúdico, con juegos. En 4 meses entró al colegio sin barrera. Ningún grupo le habría dado eso.</p>
+        <div class="who">
+          <div class="av"></div>
+          <div>
+            <div class="name">LORENA P.</div>
+            <div class="meta">MAMÁ · VALENCIA</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="quote">
+        <span class="qm tl">"</span>
+        <p>Llevo 20 años leyendo inglés pero no hablándolo. Probé grupos y me bloqueaba. En 1:1 mi profesora trabajó solo conmigo — sin vergüenza. Hoy negocio contratos por Zoom en inglés.</p>
+        <div class="who">
+          <div class="av"></div>
+          <div>
+            <div class="name">PATRICIA R.</div>
+            <div class="meta">ABOGADA · MARACAIBO</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="wrap">
+    <h2>PREGUNTAS <b>FRECUENTES</b></h2>
+    <div class="faq-list" id="faqList">
+      <div class="qa">
+        <div class="qrow"><p class="q">¿CÓMO FUNCIONAN LAS HORAS DEL PAQUETE?</p><span class="chev">▾</span></div>
+        <p class="a">Cada paquete son horas reales 1:1 con tu profesor exclusivo. Las usas en sesiones de 60 o 90 minutos según tu preferencia, dentro de los 3-6 meses del módulo. Tú decides la frecuencia.</p>
+      </div>
+      <div class="qa">
+        <div class="qrow"><p class="q">¿PUEDO TOMAR LAS CLASES ONLINE Y PRESENCIAL?</p><span class="chev">▾</span></div>
+        <p class="a">Sí. Puedes mezclar formatos según te convenga: presencial en nuestras sedes de Caracas, Barquisimeto o Puerto Ordaz, u online por Zoom desde donde estés. Mismo profesor en ambas modalidades.</p>
+      </div>
+      <div class="qa">
+        <div class="qrow"><p class="q">¿QUÉ CERTIFICACIONES TIENEN LOS PROFESORES?</p><span class="chev">▾</span></div>
+        <p class="a">Todos nuestros profesores Personalizado están certificados con CELTA o TEFL, y muchos también con TOEFL. Trabajamos alineados al Marco Común Europeo de Referencia (MCER), de A1 a C2.</p>
+      </div>
+      <div class="qa">
+        <div class="qrow"><p class="q">¿FUNCIONA PARA MI HIJO/A?</p><span class="chev">▾</span></div>
+        <p class="a">Sí. El método se adapta a la edad: con niños usamos juegos, canciones e historias. Con adolescentes hacemos preparación académica o exámenes. Cada profesor tiene experiencia con su rango de edad.</p>
+      </div>
+      <div class="qa">
+        <div class="qrow"><p class="q">¿PUEDO PAGAR MENSUAL EN VEZ DE TODO DE UNA?</p><span class="chev">▾</span></div>
+        <p class="a">Sí. El plan EJECUTIVO acepta 3 cuotas mensuales y el plan ÉLITE hasta 6 cuotas, sin recargo. Aceptamos Zelle, transferencia internacional, tarjeta y crypto — todo en USD.</p>
+      </div>
+      <div class="qa">
+        <div class="qrow"><p class="q">¿QUÉ PASA SI NO ME GUSTA MI PROFESOR?</p><span class="chev">▾</span></div>
+        <p class="a">Lo cambiamos sin costo. La química con tu profesor es clave en un programa 1:1. Tienes hasta las primeras 3 horas para pedir cambio si no es la fit correcta.</p>
+      </div>
+      <div class="qa">
+        <div class="qrow"><p class="q">¿PUEDO PAUSAR EL PROGRAMA SI VIAJO O ME OCUPO?</p><span class="chev">▾</span></div>
+        <p class="a">Sí. Como las horas son flexibles dentro del módulo, las puedes concentrar, pausar o redistribuir según tu agenda. Solo coordinas con tu profesor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2>Tu inglés. Tu plan. <span class="g">Tu profesor.</span></h2>
+    <p>Tú solo apareces a la clase. Del resto — el plan, el material, el seguimiento — nos encargamos nosotros.<br>Reserva una consulta gratis de diagnóstico. Respondemos en menos de 10 minutos.</p>
+    <button class="cta-pill whatsapp-link" type="button">
+      <span class="wa">
+        <img src="social-icons-WA Green.svg" alt="" width="16" height="16">
+      </span>
+      Diseñemos tu plan
+    </button>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <div>© 2026 Fyr Lois Personalizado · Programa 1:1 · 27 años enseñando inglés</div>
+    <div class="social-links">
+      <a class="whatsapp-link" href="https://wa.me/16893225402" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="social-icons-WA Green.svg" alt="WhatsApp"></a>
+      <a href="https://www.instagram.com/fyrlois?igsh=Z3pnczVlMGQ4Z3N6" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="social-icons- IG Green.svg" alt="Instagram"></a>
+      <a href="https://www.tiktok.com/@fyrlois.tips?_r=1&amp;_t=ZP-96O39pM8UwR" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><img src="social-icons.TK Green.svg" alt="TikTok"></a>
+    </div>
+  </div>
+</footer>
+
+<button class="wa-fab whatsapp-link" type="button" aria-label="WhatsApp">
+  <img src="social-icons-WA WT.svg" alt="" width="30" height="30">
+</button>
+
+<script>
+  document.querySelectorAll('#faqList .qa').forEach(qa=>{
+    qa.addEventListener('click', ()=> qa.classList.toggle('open'));
+  });
+
+  const d1=document.getElementById('d1'), d2=document.getElementById('d2'), d3=document.getElementById('d3');
+  let cupos = parseInt(localStorage.getItem('flCuposVip')||'37',10);
+  function setCupos(n){
+    n = Math.max(2, Math.min(50, n));
+    cupos = n; localStorage.setItem('flCuposVip', n);
+    const s = String(n).padStart(3,'0');
+    d1.textContent = s[0]; d2.textContent = s[1]; d3.textContent = s[2];
+  }
+  setCupos(cupos);
+  setInterval(()=>{ if(Math.random() < 0.25){ setCupos(cupos - 1); } }, 22000);
+
+  const WA_NUMBER = '16893225402';
+  const WA_MSG = encodeURIComponent('Hola, quiero diseñar mi plan personalizado de inglés con Fyr Lois.');
+  document.querySelectorAll('.whatsapp-link').forEach(el=>{
+    el.addEventListener('click', e=>{
+      e.preventDefault();
+      window.open(`https://wa.me/${WA_NUMBER}?text=${WA_MSG}`, '_blank');
+    });
+  });
+</script>
+</body>
+</html>
